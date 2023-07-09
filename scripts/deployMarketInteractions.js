@@ -3,11 +3,11 @@ const hre = require("hardhat");
 async function main() {
   console.log("deploying...");
 
-  const deployedContract = await ethers.deployContract("MarketInteractions");
+  const deployedContract = await ethers.deployContract("AaveMarketInteractions");
   await deployedContract.waitForDeployment();
 
   console.log(
-    "MarketInteractions loan contract deployed: ",
+    "AaveMarketInteractions loan contract deployed: ",
     await deployedContract.getAddress()
   );
 }

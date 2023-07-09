@@ -145,45 +145,6 @@
       ],
       "artifacts": []
     },
-    "/Users/rajdesai/dissertation/carboncoalitioncontracts/contracts/MarketInteractions.sol": {
-      "lastModificationDate": 1688920529165,
-      "contentHash": "7bb56633197fe73cedb297d347dc57d5",
-      "sourceName": "contracts/MarketInteractions.sol",
-      "solcConfig": {
-        "version": "0.8.19",
-        "settings": {
-          "optimizer": {
-            "enabled": false,
-            "runs": 200
-          },
-          "outputSelection": {
-            "*": {
-              "*": [
-                "abi",
-                "evm.bytecode",
-                "evm.deployedBytecode",
-                "evm.methodIdentifiers",
-                "metadata"
-              ],
-              "": [
-                "ast"
-              ]
-            }
-          }
-        }
-      },
-      "imports": [
-        "@aave/core-v3/contracts/interfaces/IPool.sol",
-        "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
-        "@openzeppelin/contracts/interfaces/IERC20.sol"
-      ],
-      "versionPragmas": [
-        "^0.8.0"
-      ],
-      "artifacts": [
-        "MarketInteractions"
-      ]
-    },
     "/Users/rajdesai/dissertation/carboncoalitioncontracts/node_modules/@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol": {
       "lastModificationDate": 1688910276340,
       "contentHash": "75709782c90506d3ce968d5a6e06b900",
@@ -290,6 +251,45 @@
       ],
       "artifacts": [
         "DataTypes"
+      ]
+    },
+    "/Users/rajdesai/dissertation/carboncoalitioncontracts/contracts/AaveMarketInteractions.sol": {
+      "lastModificationDate": 1688923451597,
+      "contentHash": "b76cf0e3315700913cb3290aa50ae958",
+      "sourceName": "contracts/AaveMarketInteractions.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@aave/core-v3/contracts/interfaces/IPool.sol",
+        "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
+        "@openzeppelin/contracts/interfaces/IERC20.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "AaveMarketInteractions"
       ]
     }
   }
