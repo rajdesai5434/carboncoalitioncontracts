@@ -9,5 +9,9 @@ module.exports = {
       url: process.env.ALCHEMY_MUMBAI_ENDPOINT,
       accounts: [process.env.PRIVATE_KEY],
     },
+    matic:{
+      url:process.env.ALCHEMY_POLYGON_ENDPOINT,
+      accounts: [process.env.MAIN_PRIVATE_KEY],
+    }
   },
 };

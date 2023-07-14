@@ -257,8 +257,8 @@
       ]
     },
     "/Users/rajdesai/dissertation/carboncoalitioncontracts/contracts/UniswapInteractions.sol": {
-      "lastModificationDate": 1689163298725,
-      "contentHash": "1ae15285ad9ba034cda7112e56e1f30e",
+      "lastModificationDate": 1689342869313,
+      "contentHash": "788f66b5ce6ea00a0a4e567b255be618",
       "sourceName": "contracts/UniswapInteractions.sol",
       "solcConfig": {
         "version": "0.8.19",
@@ -284,13 +284,14 @@
         }
       },
       "imports": [
-        "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol"
+        "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol",
+        "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol",
+        "@openzeppelin/contracts/interfaces/IERC20.sol"
       ],
       "versionPragmas": [
         "^0.8.0"
       ],
       "artifacts": [
-        "IERC20",
         "UniswapInteractions"
       ]
     },
@@ -364,6 +365,43 @@
       ],
       "artifacts": [
         "IUniswapV3SwapCallback"
+      ]
+    },
+    "/Users/rajdesai/dissertation/carboncoalitioncontracts/node_modules/@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol": {
+      "lastModificationDate": 1689093574022,
+      "contentHash": "f0616d1842da6584f8454c9b323d777f",
+      "sourceName": "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
+      ],
+      "versionPragmas": [
+        ">=0.6.0"
+      ],
+      "artifacts": [
+        "TransferHelper"
       ]
     }
   }
