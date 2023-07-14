@@ -19,7 +19,7 @@ async function main() {
     console.log("User USDC balance: ",Number(abal));
 
     //1. Approve transfer of money from wallet to contract
-    const approve1 = await usdcCoin.approve(process.env.CONTRACT_ADDRESS,1000,{gasLimit:1000000});
+    const approve1 = await usdcCoin.approve(process.env.CONTRACT_ADDRESS,100000000000000,{gasLimit:1000000});
     await approve1.wait();
     console.log("Approval hash to send coins to contract: ", approve1.hash);
 
@@ -27,7 +27,7 @@ async function main() {
     console.log("Allowance: ", Number(allow1));
 
     //1.1 Move money from wallet to contract
-    const transfer1 = await aaveInteractions.depositToContract(1000,process.env.USDC_CONTRACT_ADDRESS,{gasLimit:1000000});
+    const transfer1 = await aaveInteractions.depositToContract(100000000000000,process.env.USDC_CONTRACT_ADDRESS,{gasLimit:1000000});
     await transfer1.wait();
     console.log("Transfer hash of coins to contract: ", transfer1.hash);
 

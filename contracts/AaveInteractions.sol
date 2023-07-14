@@ -13,8 +13,8 @@ contract AaveInteractions{
     IPool public immutable POOL;
     IPoolDataProvider public immutable POOL_DATA;
     
-    address private immutable usdcAddress = 0xe9DcE89B076BA6107Bb64EF30678efec11939234;
-    address private immutable aUSDCAddress = 0x9daBC9860F8792AeE427808BDeF1f77eFeF0f24E;
+    address private immutable usdcAddress = 0xF14f9596430931E177469715c591513308244e8F;
+    address private immutable aUSDCAddress = 0xFAF6a49b4657D9c8dDa675c41cB9a05a94D3e9e9;
     address private immutable poolAddress = 0xeb7A892BB04A8f836bDEeBbf60897A7Af1Bf5d7F;
 
     mapping(address => mapping(address => uint256)) public userAccBalContract;
