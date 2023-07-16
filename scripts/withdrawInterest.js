@@ -27,9 +27,29 @@ async function main() {
 
     const totalDeposit = await aaveInteractions.poolValueAave(process.env.USDC_CONTRACT_ADDRESS);
 
+    //const num = ethers.BigNumber.from(abal);
+    console.log("Type of abl: ",typeof abal);
+
     //Interest Calculation
-    const intEarned = Number(abal) - Number(totalDeposit);
+    const intEarned = abal - totalDeposit;
     console.log("Interest Earned: ",intEarned);
+
+    console.log("Withdrawing Interest to Contract...");
+    const withdrawn = await aaveInteractions.withdrawLiquidityAave(intEarned,process.env.CONTRACT_ADDRESS,process.env.USDC_CONTRACT_ADDRESS);
+    console.log("Amount Out: ",Number(withdrawn));
+
+    const finalBal = await aaveInteractions.getBalanceContract(process.env.CONTRACT_ADDRESS,process.env.USDC_CONTRACT_ADDRESS);
+    console.log("Contract USDC balance: ",Number(finalBal));
+
+    //get aToken balance of the contract
+    const afinalBal = await aaveInteractions.getBalanceContract(process.env.CONTRACT_ADDRESS,process.env.aUSDC_CONTRACT_ADDRESS);
+    console.log("Contract aUSDC balance: ",Number(afinalBal));
+
+    //await aaveInteractions.intSwap(finalBal);
+
+    //const bct = await aaveInteractions.getBalanceContract(process.env.CONTRACT_ADDRESS,process.env.USDC_CONTRACT_ADDRESS);
+    //console.log("Contract balance: ",Number(finalBal));
+
 
 
     //Get aave data for contract
