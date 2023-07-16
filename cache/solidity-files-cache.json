@@ -257,8 +257,8 @@
       ]
     },
     "/Users/rajdesai/dissertation/carboncoalitioncontracts/contracts/UniswapInteractions.sol": {
-      "lastModificationDate": 1689342869313,
-      "contentHash": "788f66b5ce6ea00a0a4e567b255be618",
+      "lastModificationDate": 1689519406817,
+      "contentHash": "77a58f45a5be6ae52926a1047dcde963",
       "sourceName": "contracts/UniswapInteractions.sol",
       "solcConfig": {
         "version": "0.8.19",

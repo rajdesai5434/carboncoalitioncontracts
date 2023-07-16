@@ -14,22 +14,22 @@ async function main() {
     const uniswapInteractions = new ethers.Contract(process.env.UNISWAP_CONTRACT_ADDRESS, uniswapInteractionsContract.abi, account);
     console.log("UniswapInteractions address:", await uniswapInteractions.getAddress());
 
-    const wmaticBalance = await getERC20Balance(account.address,process.env.WMATIC_ADDRESS,provider)
-    const bctBalance = await getERC20Balance(account.address,process.env.BCT_ADDRESS,provider)
-
+    const wmaticBalance = await getERC20Balance(account.address,process.env.WMATIC_ADDRESS,provider);
     console.log("Wallet WMATIC balance:", Number(wmaticBalance));
+
+    const bctBalance = await getERC20Balance(account.address,process.env.BCT_ADDRESS,provider);
     console.log("Wallet BCT balance:", Number(bctBalance));
 
     const wmaticContract = new ethers.Contract(
         process.env.WMATIC_ADDRESS,
         process.env.USDC_CONTRACT_ABI,
-        provider
+        account
       )
     
       const singleSwap = new ethers.Contract(
         process.env.UNISWAP_CONTRACT_ADDRESS,
         uniswapInteractionsContract.abi,
-        provider
+        account
       );
     
       const fee = await provider.getFeeData();
@@ -55,7 +55,8 @@ async function main() {
       await outAmount.wait()
       //console.log("Transfer Hash: ",outAmount);
     
-      console.log("Amount Out:",Number(outAmount));
+      const bctBalance2 = await getERC20Balance(account.address,process.env.BCT_ADDRESS,provider);
+      console.log("Wallet BCT balance:", Number(bctBalance2));
 
 
 }

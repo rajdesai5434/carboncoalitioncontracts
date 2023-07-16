@@ -39,5 +39,10 @@ contract UniswapInteractions {
     });
 
     amountOut = swapRouter.exactInputSingle(params);
+
+    TransferHelper.safeApprove(BCT, address(this), amountIn);
+
+    TransferHelper.safeTransferFrom(BCT, address(this), msg.sender, amountOut);
+
   }
 }
