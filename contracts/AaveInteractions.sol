@@ -5,7 +5,7 @@ import {IPool} from "@aave/core-v3/contracts/interfaces/IPool.sol";
 import {IPoolAddressesProvider} from "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol";
 import {IERC20} from "@openzeppelin/contracts/interfaces/IERC20.sol";
 import {IPoolDataProvider} from "@aave/core-v3/contracts/interfaces/IPoolDataProvider.sol";
-//import {UniswapInteractions} from  "./UniswapInteractions.sol";
+import {UniswapInteractions} from  "./UniswapInteractions.sol";
 
 contract AaveInteractions{
     address payable owner;
@@ -13,22 +13,18 @@ contract AaveInteractions{
     IPoolAddressesProvider public immutable ADDRESSES_PROVIDER;
     IPool public immutable POOL;
     IPoolDataProvider public immutable POOL_DATA;
-    //UniswapInteractions public immutable UNI_CONTRACT;
+    UniswapInteractions public immutable UNI_CONTRACT;
     
-    address private immutable usdcAddress = 0xF14f9596430931E177469715c591513308244e8F;
-    address private immutable aUSDCAddress = 0xFAF6a49b4657D9c8dDa675c41cB9a05a94D3e9e9;
-    address private immutable poolAddress = 0xeb7A892BB04A8f836bDEeBbf60897A7Af1Bf5d7F;
-    //address private immutable uniContractAddress = 0xeb7A892BB04A8f836bDEeBbf60897A7Af1Bf5d7F;
+    address private immutable usdcAddress = 0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063;
+    address private immutable aUSDCAddress = 0x82E64f49Ed5EC1bC6e43DAD4FC8Af9bb3A2312EE;
+    address private immutable poolAddress = 0x794a61358D6845594F94dc1DB02A252b5b4814aD;
+    address private immutable uniContractAddress = 0x7D7ae35BC067c6afEa057305D2C68D25af146463;
 
     mapping(address => mapping(address => uint256)) public userAccBalContract;
     mapping(address => mapping(address => uint256)) public userAccBalAave;
     mapping(address => uint256) public poolValueAave;
     mapping(address => uint256) public poolValueToken;
     mapping(address => IERC20) private token;
-    
-    //mapping(address => IERC20) public allowedERC20;
-
-    //based on interest accured, update poolValueAave
 
 
     constructor()
@@ -39,7 +35,7 @@ contract AaveInteractions{
         owner = payable(msg.sender);
         token[usdcAddress] = IERC20(usdcAddress);
         token[aUSDCAddress] = IERC20(aUSDCAddress);
-        //UNI_CONTRACT = UniswapInteractions(uniContractAddress);
+        UNI_CONTRACT = UniswapInteractions(uniContractAddress);
     }
 
     function allowedToken(address _tokenAddress) external 
@@ -122,9 +118,9 @@ contract AaveInteractions{
         return POOL.getUserAccountData(_contractAddress);
     }
 
-    //function intSwap(uint256 _amount) external {
-    //    UNI_CONTRACT.swapExactInputSingle(_amount);
-    //}
+    function intSwap(uint256 _amount) external {
+        UNI_CONTRACT.swapExactInputSingle(_amount);
+    }
 
     function withdrawLiquidityAave(uint256 _amount, address _contractAddress, address _tokenAddress) external 
         returns(uint256)

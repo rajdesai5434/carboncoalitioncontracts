@@ -5,11 +5,11 @@ require("dotenv").config();
 module.exports = {
   solidity: "0.8.19",
   networks: {
-    mumbai: {
+    test: {
       url: process.env.ALCHEMY_MUMBAI_ENDPOINT,
-      accounts: [process.env.PRIVATE_KEY],
+      accounts: [process.env.MAIN_PRIVATE_KEY],
     },
-    matic:{
+    main:{
       url:process.env.ALCHEMY_POLYGON_ENDPOINT,
       accounts: [process.env.MAIN_PRIVATE_KEY],
     }

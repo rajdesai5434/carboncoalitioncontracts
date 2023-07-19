@@ -26,7 +26,7 @@ async function main() {
         account
       )
     
-      const singleSwap = new ethers.Contract(
+    const singleSwap = new ethers.Contract(
         process.env.UNISWAP_CONTRACT_ADDRESS,
         uniswapInteractionsContract.abi,
         account
@@ -38,7 +38,7 @@ async function main() {
     
       console.log("Getting ready for approval");
 
-      const inputAmount = ethers.parseUnits('1',18);
+      const inputAmount = ethers.parseUnits('0.1',18);
     
       const firstApproval = await wmaticContract.connect(account).approve(
         await singleSwap.getAddress(),

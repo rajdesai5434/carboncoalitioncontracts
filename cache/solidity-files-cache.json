@@ -180,8 +180,8 @@
       ]
     },
     "/Users/rajdesai/dissertation/carboncoalitioncontracts/contracts/AaveInteractions.sol": {
-      "lastModificationDate": 1689524467762,
-      "contentHash": "d576878e1217a377e1a9b1c33fed3558",
+      "lastModificationDate": 1689698040886,
+      "contentHash": "de892e023727394e2ae0f05db5810ed1",
       "sourceName": "contracts/AaveInteractions.sol",
       "solcConfig": {
         "version": "0.8.19",
@@ -210,7 +210,8 @@
         "@aave/core-v3/contracts/interfaces/IPool.sol",
         "@aave/core-v3/contracts/interfaces/IPoolAddressesProvider.sol",
         "@openzeppelin/contracts/interfaces/IERC20.sol",
-        "@aave/core-v3/contracts/interfaces/IPoolDataProvider.sol"
+        "@aave/core-v3/contracts/interfaces/IPoolDataProvider.sol",
+        "./UniswapInteractions.sol"
       ],
       "versionPragmas": [
         "^0.8.0"
@@ -257,8 +258,8 @@
       ]
     },
     "/Users/rajdesai/dissertation/carboncoalitioncontracts/contracts/UniswapInteractions.sol": {
-      "lastModificationDate": 1689519406817,
-      "contentHash": "77a58f45a5be6ae52926a1047dcde963",
+      "lastModificationDate": 1689695703074,
+      "contentHash": "aebf2712989b8ddcd3b76b025d1b932d",
       "sourceName": "contracts/UniswapInteractions.sol",
       "solcConfig": {
         "version": "0.8.19",
