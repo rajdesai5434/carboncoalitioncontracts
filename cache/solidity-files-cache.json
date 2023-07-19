@@ -180,8 +180,8 @@
       ]
     },
     "/Users/rajdesai/dissertation/carboncoalitioncontracts/contracts/AaveInteractions.sol": {
-      "lastModificationDate": 1689698040886,
-      "contentHash": "de892e023727394e2ae0f05db5810ed1",
+      "lastModificationDate": 1689801278842,
+      "contentHash": "8e76e85989cbe403ff454cd3a87b3b27",
       "sourceName": "contracts/AaveInteractions.sol",
       "solcConfig": {
         "version": "0.8.19",
@@ -258,8 +258,8 @@
       ]
     },
     "/Users/rajdesai/dissertation/carboncoalitioncontracts/contracts/UniswapInteractions.sol": {
-      "lastModificationDate": 1689695703074,
-      "contentHash": "aebf2712989b8ddcd3b76b025d1b932d",
+      "lastModificationDate": 1689801227974,
+      "contentHash": "171ddb5befa38173ef7bb26680ce768e",
       "sourceName": "contracts/UniswapInteractions.sol",
       "solcConfig": {
         "version": "0.8.19",
@@ -286,8 +286,7 @@
       },
       "imports": [
         "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol",
-        "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol",
-        "@openzeppelin/contracts/interfaces/IERC20.sol"
+        "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol"
       ],
       "versionPragmas": [
         "^0.8.0"

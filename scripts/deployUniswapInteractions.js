@@ -1,15 +1,16 @@
 const hre = require("hardhat");
+require("dotenv-flow").config({
+  silent: true
+});
 
 async function main() {
   console.log("deploying...");
 
-  const deployedContract = await ethers.deployContract("UniswapInteractions");
-  await deployedContract.waitForDeployment();
+  const deployedContract = await hre.ethers.getContractFactory("UniswapInteractions");
+  const contract = await deployedContract.deploy(process.env.TOKEN_ADDRESS,process.env.CARBON_CREDIT_ADDRESS,process.env.ROUTER_ADDRESS);
+  await contract.waitForDeployment();
 
-  console.log(
-    "UniswapInteractions loan contract deployed: ",
-    await deployedContract.getAddress()
-  );
+  console.log("UniswapInteractions loan contract deployed: ", await contract.getAddress());
 }
 
 main().catch((error) => {

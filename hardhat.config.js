@@ -1,17 +1,15 @@
 require("@nomicfoundation/hardhat-toolbox");
-require("dotenv").config();
+require("dotenv-flow").config({
+  silent: true
+});
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.19",
   networks: {
-    test: {
-      url: process.env.ALCHEMY_MUMBAI_ENDPOINT,
-      accounts: [process.env.MAIN_PRIVATE_KEY],
+    polygon: {
+      url: process.env.ALCHEMY_ENDPOINT,
+      accounts: [process.env.PRIVATE_KEY],
     },
-    main:{
-      url:process.env.ALCHEMY_POLYGON_ENDPOINT,
-      accounts: [process.env.MAIN_PRIVATE_KEY],
-    }
   },
 };

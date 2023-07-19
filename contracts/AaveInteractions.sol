@@ -15,16 +15,20 @@ contract AaveInteractions{
     IPoolDataProvider public immutable POOL_DATA;
     UniswapInteractions public immutable UNI_CONTRACT;
     
-    address private immutable usdcAddress = 0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063;
-    address private immutable aUSDCAddress = 0x82E64f49Ed5EC1bC6e43DAD4FC8Af9bb3A2312EE;
-    address private immutable poolAddress = 0x794a61358D6845594F94dc1DB02A252b5b4814aD;
-    address private immutable uniContractAddress = 0x7D7ae35BC067c6afEa057305D2C68D25af146463;
+    address private immutable tokenAddress = 0xD087ff96281dcf722AEa82aCA57E8545EA9e6C96;
+    address private immutable aTokenAddress = 0xAA02A95942Cb7d48Ac8ad8C3b5D65E546eC3Ecd3;
+    address private immutable poolAddress = 0xeb7A892BB04A8f836bDEeBbf60897A7Af1Bf5d7F;
+    address private immutable uniContractAddress = 0x2065865839d7389acF33A96e1Fcb7E6B00eeBF4E;
 
     mapping(address => mapping(address => uint256)) public userAccBalContract;
     mapping(address => mapping(address => uint256)) public userAccBalAave;
     mapping(address => uint256) public poolValueAave;
     mapping(address => uint256) public poolValueToken;
     mapping(address => IERC20) private token;
+    
+    //mapping(address => IERC20) public allowedERC20;
+
+    //based on interest accured, update poolValueAave
 
 
     constructor()
@@ -33,8 +37,8 @@ contract AaveInteractions{
         POOL = IPool(ADDRESSES_PROVIDER.getPool());
         POOL_DATA = IPoolDataProvider(ADDRESSES_PROVIDER.getPool());
         owner = payable(msg.sender);
-        token[usdcAddress] = IERC20(usdcAddress);
-        token[aUSDCAddress] = IERC20(aUSDCAddress);
+        token[tokenAddress] = IERC20(tokenAddress);
+        token[aTokenAddress] = IERC20(aTokenAddress);
         UNI_CONTRACT = UniswapInteractions(uniContractAddress);
     }
 
@@ -118,10 +122,6 @@ contract AaveInteractions{
         return POOL.getUserAccountData(_contractAddress);
     }
 
-    function intSwap(uint256 _amount) external {
-        UNI_CONTRACT.swapExactInputSingle(_amount);
-    }
-
     function withdrawLiquidityAave(uint256 _amount, address _contractAddress, address _tokenAddress) external 
         returns(uint256)
     {
@@ -139,6 +139,24 @@ contract AaveInteractions{
         require(userAccBalContract[msg.sender][_tokenAddress] >= _amount);
         userAccBalContract[msg.sender][_tokenAddress] -= _amount;
         token[_tokenAddress].transferFrom(address(this),msg.sender, _amount);
+    }
+
+    function interestSwapApproval(uint256 _amount, address _tokenAddress) external returns (bool){
+
+        return token[_tokenAddress].approve(uniContractAddress, _amount);
+    }
+
+    function interestSwapAllowance(address _tokenAddress)
+        external
+        view
+        returns (uint256)
+    {   
+        return token[_tokenAddress].allowance(address(this), uniContractAddress);
+    }
+
+    function interestSwap(uint256 _amount) external returns (uint256){
+
+        return UNI_CONTRACT.swapExactInputSingle(_amount,address(this));
     }
 
     modifier onlyOwner() {
