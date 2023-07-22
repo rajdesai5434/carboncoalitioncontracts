@@ -14,7 +14,7 @@ async function main() {
     console.log("AaveInteractions address:", await aaveInteractions.getAddress());
 
     const token = new ethers.Contract(process.env.TOKEN_ADDRESS, process.env.TOKEN_ABI, account);
-    console.log("USDC address:", await token.getAddress());
+    console.log("TOKEN address:", await token.getAddress());
 
     const provider = ethers.provider;
     const fee = await provider.getFeeData();
@@ -23,7 +23,7 @@ async function main() {
 
     //Get account balance of contract
     const abal = await aaveInteractions.getBalanceContract(account.address,process.env.TOKEN_ADDRESS);
-    console.log("User USDC balance: ",Number(abal));
+    console.log("User TOKEN balance: ",Number(abal));
 
     const inputAmount = ethers.parseUnits('0.1',18);
     console.log("Approval Amount: ",Number(inputAmount));
@@ -43,7 +43,7 @@ async function main() {
 
     //Get account balance of contract
     const bal = await aaveInteractions.getBalanceContract(process.env.AAVE_CONTRACT_ADDRESS,process.env.TOKEN_ADDRESS);
-    console.log("Contract USDC balance: ",Number(bal));
+    console.log("Contract TOKEN balance: ",Number(bal));
 }
 
 main().catch((error) => {

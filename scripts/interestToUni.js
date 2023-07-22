@@ -20,7 +20,7 @@ async function main() {
     console.log("Carbon Credit address:", await carbonCreditInteractions.getAddress());
     
     const token = new ethers.Contract(process.env.TOKEN_ADDRESS, process.env.TOKEN_ABI,account);
-    console.log("USDC address:", await token.getAddress());
+    console.log("TOKEN address:", await token.getAddress());
 
     const provider = ethers.provider;
     const fee = await provider.getFeeData();
@@ -28,7 +28,7 @@ async function main() {
     console.log("Gas Price: ",Number(gasPrice));
 
     const finalBal = await aaveInteractions.getBalanceContract(process.env.AAVE_CONTRACT_ADDRESS,process.env.TOKEN_ADDRESS);
-    console.log("USDC balance to swap: ",Number(finalBal));
+    console.log("TOKEN balance to swap: ",Number(finalBal));
 
     const bal = await carbonCreditInteractions.balanceOf(process.env.AAVE_CONTRACT_ADDRESS);
     console.log("Wallet Carbon Token Balance:", Number(bal));
