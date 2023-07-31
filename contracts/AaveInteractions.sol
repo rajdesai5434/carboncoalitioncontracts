@@ -135,10 +135,11 @@ contract AaveInteractions{
         return POOL.withdraw(asset,amount,to);
     }
 
-    function withdrawFromContract(uint256 _amount, address _tokenAddress) external onlyOwner {
+    function withdrawFromContract(uint256 _amount, address _tokenAddress) external returns (bool){
         require(userAccBalContract[msg.sender][_tokenAddress] >= _amount);
         userAccBalContract[msg.sender][_tokenAddress] -= _amount;
-        token[_tokenAddress].transferFrom(address(this),msg.sender, _amount);
+        bool success = token[_tokenAddress].transfer(msg.sender, _amount);
+        return success;
     }
 
     function interestSwapApproval(uint256 _amount, address _tokenAddress) external returns (bool){
